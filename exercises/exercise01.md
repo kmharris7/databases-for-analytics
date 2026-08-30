@@ -59,7 +59,7 @@ Why do you think this data type was selected?
 
 ### Answer
 
-_Write your explanation here._
+**Country.IndepYear** is a small integer. I think this data type was chosen over something like text in the event that you need to add/subtract years 
 
 ### Screenshot
 
@@ -67,7 +67,7 @@ _Write your explanation here._
 DESCRIBE country;
 ```
 
-![Q2 Screenshot](screenshots/q2_indepyear.png)
+![Q2 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/0fcc10d47e95fb7dd164d78294dd408352311f1c/exercises/screenshots/screenshot_1_mod1.png)
 
 ---
 
@@ -78,7 +78,7 @@ Explain why your proposed data type might be better in some situations.
 
 ### Answer
 
-_Write your explanation here._
+I think making year a text format may prove beneficial over a numerical value for searches. 
 
 ---
 
@@ -90,13 +90,13 @@ Write a SQL command to **list the names of all cities in alphabetical order**.
 
 ```sql
 SELECT Name
-FROM city
-ORDER BY Name;
+FROM world.city
+ORDER BY Name asc;
 ```
 
 ### Screenshot
 
-![Q4 Screenshot](screenshots/q4_cities_sorted.png)
+![Q4 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/3657ca7a81a442c49319ce304269d6eeeb81d297/exercises/screenshots/screenshot_3_mod1.png)
 
 ---
 
@@ -110,13 +110,13 @@ showing **each only once**, sorted alphabetically.
 
 ```sql
 SELECT DISTINCT GovernmentForm
-FROM country
-ORDER BY GovernmentForm;
+FROM world.country
+ORDER BY GovernmentForm asc;
 ```
 
 ### Screenshot
 
-![Q5 Screenshot](screenshots/q5_government_forms.png)
+![Q5 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/a1f09452d44a67edbd5a5511dc4abb05a584726b/exercises/screenshots/screenshot_5_mod1.png)
 
 ---
 
@@ -128,13 +128,13 @@ Write a SQL command to **list all countries in the `Oceania` continent**.
 
 ```sql
 SELECT Name
-FROM country
+FROM world.country
 WHERE Continent = 'Oceania';
 ```
 
 ### Screenshot
 
-![Q6 Screenshot](screenshots/q6_oceania.png)
+![Q6 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/244adff2c547c15923681d021f68052c3ea29ffd/exercises/screenshots/screenshot_6_mod1.png)
 
 ---
 
@@ -151,7 +151,7 @@ FROM city;
 
 ### Screenshot
 
-![Q7 Screenshot](screenshots/q7_city_countrycode.png)
+![Q7 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/c9cb69a3c3c11b46676055dc0720483af165a2c8/exercises/screenshots/screenshot_7_mod1.png)
 
 ---
 
@@ -169,7 +169,7 @@ WHERE Name = 'Nashville-Davidson';
 
 ### Screenshot
 
-![Q8 Screenshot](screenshots/q8_update_city.png)
+![Q8 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/a5a2fb8c97d613996d803d2589de025600d58794/exercises/screenshots/screenshot8_mod1.png)
 
 ---
 
@@ -188,7 +188,7 @@ VALUES ('NAR', 'Narnia', 'Europe', 'Fantasy', 1000000);
 
 ### Screenshot
 
-![Q9 Screenshot](screenshots/q9_insert_narnia.png)
+![Q9 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/1dd79608cf0df909e8a7141435c5561ce4610938/exercises/screenshots/screenshot9_mod1.png)
 
 ---
 
@@ -205,4 +205,4 @@ WHERE Code = 'NAR';
 
 ### Screenshot
 
-![Q10 Screenshot](screenshots/q10_delete_narnia.png)
+![Q10 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/24d588d68fe623370620eaea3b21336b0bc36604/exercises/screenshots/screenshot10_mod1.png)
