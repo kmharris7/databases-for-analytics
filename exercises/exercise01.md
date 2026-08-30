@@ -1,6 +1,6 @@
 # Exercise 01: World Database SQL Practice
 
-- Name:
+- Name: Kalei H.
 - Course: Database for Analytics
 - Module: 1
 - Database Used: World Database
@@ -35,7 +35,10 @@ Why were these data types selected?
 
 ### Answer
 
-_Write your explanation here._
+**Country.population** is an example of discrete data, as the values are represented by positive integers, which are "countable". **Country.LifeExpectancy** is an example of continuous data, as the data can range and can be arbitrarily accurate. In MySQL, LifeExpectancy only goes to one decimal place, but it could be more accurate if we took into account minutes, seconds, milliseconds, etc. 
+
+I think these data types were chosen because they most accurately reflect what is wanted from the data points. For Population, you generally count the number of people and cannot have .5 of a person, so there is no need for arbitrary accuracy. Rather LifeExpectancy, people's ages can be arbitrary and can be measured, so using a continuous data point would better reflect the data 
+
 
 ### Screenshot
 
@@ -45,7 +48,7 @@ _Show the table structure or DESCRIBE output._
 DESCRIBE country;
 ```
 
-![Q1 Screenshot](screenshots/q1_datatypes.png)
+![Q1 Screenshot](exercises/screenshots/screenshot_1_mod1.png)
 
 ---
 
