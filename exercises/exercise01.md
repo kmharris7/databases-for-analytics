@@ -48,7 +48,7 @@ _Show the table structure or DESCRIBE output._
 DESCRIBE country;
 ```
 
-![Q1 Screenshot](exercises/screenshots/screenshot_1_mod1.png)
+![Q1 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/0fcc10d47e95fb7dd164d78294dd408352311f1c/exercises/screenshots/screenshot_1_mod1.png)
 
 ---
 
