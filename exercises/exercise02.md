@@ -216,7 +216,7 @@ with numberOfLanguages as (
   select c.name as name, count(l.language) as official_languages
   from country as c
   left join countrylanguage as l on l.countrycode = c.code
-  where isOfficial = 'T
+  where isOfficial = 'T'
 
 )
 
@@ -245,7 +245,7 @@ since some rows use that instead of actual data.
 select name
 from city
 
-where district like '%–%
+where district like '%–%'
 ```
 
 ### Screenshot
