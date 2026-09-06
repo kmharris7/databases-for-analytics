@@ -31,10 +31,11 @@ _Write the number of cities imported._
 _Show evidence of how you determined this (for example, a COUNT query)._
 
 ```sql
--- Your SQL here
+select count(name)
+from city
 ```
 
-![Q1 Screenshot](screenshots/q1_city_count.png)
+![Q1 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/4e98df64d9c3aa59d908bd9f668c96c0c1dbd9f4/exercises/screenshots/mod2/q1_mod2.png)
 
 ---
 
@@ -47,12 +48,14 @@ along with the **name of each language spoken in that country**.
 ### SQL
 
 ```sql
--- Your SQL here
+select c.name, l.language
+from country as c
+left join countrylanguage as l on l.countrycode = c.code
 ```
 
 ### Screenshot
 
-![Q2 Screenshot](screenshots/q2_country_languages.png)
+![Q2 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/4e98df64d9c3aa59d908bd9f668c96c0c1dbd9f4/exercises/screenshots/mod2/q2_mod2.png)
 
 ---
 
