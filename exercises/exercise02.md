@@ -68,12 +68,15 @@ of each **official language spoken in that country**.
 ### SQL
 
 ```sql
--- Your SQL here
+select c.name, l.language
+from country as c
+left join countrylanguage as l on l.countrycode = c.code
+where isOfficial = 'T'
 ```
 
 ### Screenshot
 
-![Q3 Screenshot](screenshots/q3_official_languages.png)
+![Q3 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/e9d47e85ec87de20a8406c08694643e6540b8b7b/exercises/screenshots/mod2/q3_mod2.png)
 
 ---
 
@@ -99,8 +102,7 @@ ON country.code = countrylanguage.countrycode;
 
 ### Answer
 
-_Write your explanation here._
-
+ The second query will show you all the countries from the country table, even if they do not have a corresponding country code in the countryLangauge table, whereas query 1 will only show you countries that have corresponding country codes in both tables. Query 2 will show countries such as Antarctica and Bouvet island though they do not have country codes in the countryLanguages table. Query 1 omits those countries. 
 ---
 
 ## Question 5
@@ -112,12 +114,13 @@ Do **not** repeat any form of government more than once.
 ### SQL
 
 ```sql
--- Your SQL here
+select distinct governmentform
+from country
 ```
 
 ### Screenshot
 
-![Q5 Screenshot](screenshots/q5_government_forms.png)
+![Q5 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/e9d47e85ec87de20a8406c08694643e6540b8b7b/exercises/screenshots/mod2/q5_mod2.png)
 
 ---
 
@@ -130,12 +133,19 @@ Label the column **"City or Country Name"**.
 ### SQL
 
 ```sql
--- Your SQL here
+(
+  select name as "City or Country"
+  from city
+) union
+(
+  select name
+  from country
+)
 ```
 
 ### Screenshot
 
-![Q6 Screenshot](screenshots/q6_union_city_country.png)
+![Q6 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/e9d47e85ec87de20a8406c08694643e6540b8b7b/exercises/screenshots/mod2/q6_mod2.png)
 
 ---
 
@@ -149,12 +159,18 @@ Be sure to **sort by country name**.
 ### SQL
 
 ```sql
--- Your SQL here
+select c.name,
+count(l.language) as numOfLanguages
+from country as c
+left join countrylanguage as l on l.countrycode = c.code
+
+group by c.name
+order by c.name asc
 ```
 
 ### Screenshot
 
-![Q7 Screenshot](screenshots/q7_language_count_by_country.png)
+![Q7 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/e9d47e85ec87de20a8406c08694643e6540b8b7b/exercises/screenshots/mod2/q7_mod2.png)
 
 ---
 
@@ -168,12 +184,20 @@ Be sure to **sort by language name**.
 ### SQL
 
 ```sql
--- Your SQL here
+select
+l.language,
+count(c.name) as "Number of Countries"
+
+from country as c
+left join countrylanguage as l on l.countrycode = c.code
+
+group by l.language
+order by l.language
 ```
 
 ### Screenshot
 
-![Q8 Screenshot](screenshots/q8_language_country_count.png)
+![Q8 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/e9d47e85ec87de20a8406c08694643e6540b8b7b/exercises/screenshots/mod2/q8_mod2.png)
 
 ---
 
@@ -188,12 +212,22 @@ _Hint: There are 8 such countries in this dataset._
 ### SQL
 
 ```sql
--- Your SQL here
+with numberOfLanguages as (
+  select c.name as name, count(l.language) as official_languages
+  from country as c
+  left join countrylanguage as l on l.countrycode = c.code
+  where isOfficial = 'T
+
+)
+
+select name, official_languages
+from numberOfLanguages
+where official_languages > 2 
 ```
 
 ### Screenshot
 
-![Q9 Screenshot](screenshots/q9_multiple_official_languages.png)
+![Q9 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/e9d47e85ec87de20a8406c08694643e6540b8b7b/exercises/screenshots/mod2/q9_mod2.png)
 
 ---
 
@@ -208,12 +242,15 @@ since some rows use that instead of actual data.
 ### SQL
 
 ```sql
--- Your SQL here
+select name
+from city
+
+where district like '%–%
 ```
 
 ### Screenshot
 
-![Q10 Screenshot](screenshots/q10_missing_districts.png)
+![Q10 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/82beda76388930d7ca5c2a39e4f085ff12591ad9/exercises/screenshots/mod2/q10_2_mod2.png)
 
 ---
 
@@ -227,9 +264,20 @@ _Hint: The result should be approximately 0.4%._
 ### SQL
 
 ```sql
--- Your SQL here
+with numOfMissingDistricts as (
+  select count(name) as districtCount
+  from city
+  where district like '%–%'
+),
+numOfCities as (
+  select count(name) as cityCount
+  from city 
+)
+
+select cast(districtCount as decimal(9,2)) / cast(cityCount as decimal(9,2)) * 100 as percent_of_missing_districts
+from numOfMissingDistricts, numOfCities
 ```
 
 ### Screenshot
 
-![Q11 Screenshot](screenshots/q11_missing_district_percentage.png)
+![Q11 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/82beda76388930d7ca5c2a39e4f085ff12591ad9/exercises/screenshots/mod2/q11_mod2.png)
