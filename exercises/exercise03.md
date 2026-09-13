@@ -36,7 +36,7 @@ _Show evidence of how you determined this (for example, a count query)._
 db["restaurants"].countDocuments()
 ```
 
-![Q1 Screenshot](screenshots/q1_document_count.png)
+![Q1 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/9bf5751a63ee81227fd3d8f45476952fb3f47c10/exercises/screenshots/mod3/q1_mod3.png)
 
 ---
 
@@ -54,7 +54,7 @@ use("44661")
 
 ### Screenshot
 
-![Q2 Screenshot](screenshots/q2_use_database.png)
+![Q2 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/9bf5751a63ee81227fd3d8f45476952fb3f47c10/exercises/screenshots/mod3/q2_mod3.png)
 
 ---
 
@@ -72,7 +72,7 @@ db.restaurants.find({borough:'Queens'})
 
 ### Screenshot
 
-![Q3 Screenshot](screenshots/q3_queens_restaurants.png)
+![Q3 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/9bf5751a63ee81227fd3d8f45476952fb3f47c10/exercises/screenshots/mod3/q3_mod3.png)
 
 ---
 
@@ -90,7 +90,7 @@ db.restaurants.find({borough:'Queens'}).count()
 
 ### Screenshot
 
-![Q4 Screenshot](screenshots/q4_queens_count.png)
+![Q4 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/9bf5751a63ee81227fd3d8f45476952fb3f47c10/exercises/screenshots/mod3/q4_mod3.png)
 
 ---
 
@@ -109,7 +109,7 @@ db.restaurants.find({borough:'Queens',cuisine:'Hamburgers'})
 
 ### Screenshot
 
-![Q5 Screenshot](screenshots/q5_queens_hamburgers.png)
+![Q5 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/9bf5751a63ee81227fd3d8f45476952fb3f47c10/exercises/screenshots/mod3/q5_mod3.png)
 
 ---
 
@@ -129,7 +129,7 @@ db.restaurants.find({'address.zipcode':'10460'})
 
 ### Screenshot
 
-![Q6 Screenshot](screenshots/q6_zipcode_count.png)
+![Q6 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/9bf5751a63ee81227fd3d8f45476952fb3f47c10/exercises/screenshots/mod3/q6_mod3.png)
 
 ---
 
@@ -155,12 +155,12 @@ Your output should resemble:
 ### MongoDB Query
 
 ```javascript
-db.restaurants.find({'address.zipcode':'10460'},{name:1})
+db.restaurants.find({'address.zipcode':'10460'},{_id:0,name:1})
 ```
 
 ### Screenshot
 
-![Q7 Screenshot](screenshots/q7_zipcode_names.png)
+![Q7 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/e67536860906fbee00ec81ea9cd0f2e982066404/exercises/screenshots/mod3/q7_mod3_v2.png)
 
 ---
 
@@ -179,9 +179,9 @@ Your results should include:
 ### MongoDB Query
 
 ```javascript
-db.restaurants.find({name:/.*ihop.*/i},{name:1})
+db.restaurants.find({name:/.*ihop.*/i},{_id:0,name:1})
 ```
 
 ### Screenshot
 
-![Q8 Screenshot](screenshots/q8_ihop_case_insensitive.png)
+![Q8 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/e67536860906fbee00ec81ea9cd0f2e982066404/exercises/screenshots/mod3/q8_mod3_v2.png)
