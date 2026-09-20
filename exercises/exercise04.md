@@ -53,7 +53,7 @@ order by official_languages desc
 
 ### Screenshot
 
-![Q1 Screenshot](screenshots/q1_official_language_counts.png)
+![Q1 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/a08ca0a25b1f03e328e9ab960c18e2d6facfd767/exercises/screenshots/mod4/q1_mod4.png)
 
 ---
 
@@ -96,7 +96,7 @@ languages
 
 ### Screenshot
 
-![Q2 Screenshot](screenshots/q2_jupyter_query_results.png)
+![Q2 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/a08ca0a25b1f03e328e9ab960c18e2d6facfd767/exercises/screenshots/mod4/q2_mod4.png)
 
 ---
 
@@ -136,4 +136,4 @@ plt.legend(loc='upper right')
 
 ### Screenshot
 
-![Q3 Screenshot](screenshots/q3_countries_graph.png)
+![Q3 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/a08ca0a25b1f03e328e9ab960c18e2d6facfd767/exercises/screenshots/mod4/q3_mod4_1.png)
