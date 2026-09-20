@@ -1,8 +1,8 @@
 # Exercise 04: Advanced SQL, Jupyter, and Visualization
 
-- Name:
+- Name: Kalei H
 - Course: Database for Analytics
-- Module:
+- Module: 4
 - Database Used: World Database
 - Tools Used: PostgreSQL, SQLAlchemy, Pandas, Jupyter Notebooks
 
@@ -34,7 +34,21 @@ along with the **number of official languages spoken**.
 ### SQL
 
 ```sql
--- Your SQL here
+with num_of_languages as (
+  select c.name as name, count(l.language) as official_languages
+  from country as c
+  join countrylanguage as l on l.countrycode = c.code
+  where isOfficial = 'T'
+
+  group by c.name
+
+)
+
+select name, official_languages
+from num_of_languages
+where official_languages > 2 
+
+order by official_languages desc
 ```
 
 ### Screenshot
@@ -56,7 +70,28 @@ execute the query from Question 1 and
 ### Python Code
 
 ```python
-# Your three Python statements here
+#statement 1
+query = """ with num_of_languages as (
+  select c.name as name, count(l.language) as official_languages
+  from country as c
+  join countrylanguage as l on l.countrycode = c.code
+  where isOfficial = 'T'
+
+  group by c.name
+
+)
+
+select name, official_languages
+from num_of_languages
+where official_languages > 2 
+
+order by official_languages desc
+"""
+#statement 2
+languages = pd.read_sql_query(query,engine)
+
+#statement 3
+languages
 ```
 
 ### Screenshot
@@ -77,7 +112,26 @@ to produce the following graph:
 ### Python Code
 
 ```python
-# Your Python code here
+graph_query = """
+    with num_of_languages as (
+  select c.name as name, count(l.language) as num_languages
+  from country as c
+  join countrylanguage as l on l.countrycode = c.code
+  where isOfficial = 'T'
+
+  group by c.name
+
+)
+
+select name, num_languages
+from num_of_languages
+where num_languages > 2 
+
+order by num_languages desc
+"""
+graph_data = pd.read_sql_query(graph_query,engine)
+graph = graph_data.plot(x='name',y='num_languages',kind='bar',figsize=(5,4))
+plt.legend(loc='upper right')
 ```
 
 ### Screenshot
