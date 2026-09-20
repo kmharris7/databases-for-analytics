@@ -35,9 +35,9 @@ Why were these data types selected?
 
 ### Answer
 
-**Country.population** is an example of discrete data, as the values are represented by positive integers, which are "countable". **Country.LifeExpectancy** is an example of continuous data, as the data can range and can be arbitrarily accurate. In MySQL, LifeExpectancy only goes to one decimal place, but it could be more accurate if we took into account minutes, seconds, milliseconds, etc. 
+**Country.population** is an example of discrete data, as the values are represented by positive integers, which are "countable". **Country.LifeExpectancy** is an example of continuous data, as the data can range and can be arbitrarily accurate. In MySQL, LifeExpectancy only goes to one decimal place, but it could be more accurate if we took into account minutes, seconds, milliseconds, etc.
 
-I think these data types were chosen because they most accurately reflect what is wanted from the data points. For Population, you generally count the number of people and cannot have .5 of a person, so there is no need for arbitrary accuracy. Rather LifeExpectancy, people's ages can be arbitrary and can be measured, so using a continuous data point would better reflect the data 
+I think these data types were chosen because they most accurately reflect what is wanted from the data points. For Population, you generally count the number of people and cannot have .5 of a person, so there is no need for arbitrary accuracy. Rather LifeExpectancy, people's ages can be arbitrary and can be measured, so using a continuous data point would better reflect the data
 
 
 ### Screenshot
@@ -59,7 +59,7 @@ Why do you think this data type was selected?
 
 ### Answer
 
-**Country.IndepYear** is a small integer. I think this data type was chosen over something like text in the event that you need to add/subtract years 
+**Country.IndepYear** is a small integer. I think this data type was chosen over something like text in the event that you need to add/subtract years
 
 ### Screenshot
 
@@ -78,7 +78,7 @@ Explain why your proposed data type might be better in some situations.
 
 ### Answer
 
-I think making year a text format may prove beneficial over a numerical value for searches. 
+I think making year a text format may prove beneficial over a numerical value for searches.
 
 ---
 

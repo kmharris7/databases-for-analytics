@@ -102,7 +102,7 @@ ON country.code = countrylanguage.countrycode;
 
 ### Answer
 
- The second query will show you all the countries from the country table, even if they do not have a corresponding country code in the countryLangauge table, whereas query 1 will only show you countries that have corresponding country codes in both tables. Query 2 will show countries such as Antarctica and Bouvet island though they do not have country codes in the countryLanguages table. Query 1 omits those countries. 
+ The second query will show you all the countries from the country table, even if they do not have a corresponding country code in the countryLangauge table, whereas query 1 will only show you countries that have corresponding country codes in both tables. Query 2 will show countries such as Antarctica and Bouvet island though they do not have country codes in the countryLanguages table. Query 1 omits those countries.
 ---
 
 ## Question 5
@@ -222,7 +222,7 @@ with numberOfLanguages as (
 
 select name, official_languages
 from numberOfLanguages
-where official_languages > 2 
+where official_languages > 2
 ```
 
 ### Screenshot
@@ -271,7 +271,7 @@ with numOfMissingDistricts as (
 ),
 numOfCities as (
   select count(name) as cityCount
-  from city 
+  from city
 )
 
 select cast(districtCount as decimal(9,2)) / cast(cityCount as decimal(9,2)) * 100 as percent_of_missing_districts
