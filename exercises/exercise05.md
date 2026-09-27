@@ -43,7 +43,11 @@ year
 ### SQL
 
 ```sql
--- Your SQL here
+select distinct extract(year from sent_date) as year
+
+from emails
+
+order by year asc
 ```
 
 ### Screenshot
@@ -68,7 +72,12 @@ count   year
 ### SQL
 
 ```sql
--- Your SQL here
+select count(email_id),extract(year from sent_date) as year
+
+from emails
+
+group by year 
+order by year asc
 ```
 
 ### Screenshot
@@ -90,7 +99,15 @@ Only include emails that contain **both** a sent date and an opened date.
 ### SQL
 
 ```sql
--- Your SQL here
+select 
+date(sent_date),
+date(opened_date),
+date(opened_date)-date(sent_date) as days_between
+
+from emails
+
+where sent_date is not null 
+and opened_date is not null
 ```
 
 ### Screenshot
@@ -108,7 +125,11 @@ show emails that contain an **opened date BEFORE the sent date**.
 ### SQL
 
 ```sql
--- Your SQL here
+select *
+
+from emails 
+
+where sent_date > opened_date
 ```
 
 ### Screenshot
@@ -127,7 +148,7 @@ After looking at the data, **why is this the case?**
 
 ### Answer
 
-_Write your explanation here._
+All of the emails that have a opened date before the sent date are at the same time, showing that those dates where rounded up to the same time (15:00) for their specific date. 
 
 ### Screenshot (if requested by instructor)
 
@@ -167,8 +188,7 @@ CREATE TEMP TABLE customer_dealership_distance AS (
 ```
 
 ### Answer
-
-_Write your explanation here._
+The code is using the earthdistance module to find the distance between the a patient's location and a dealership's location. The first part create a table and pulls the longitude and latitude points of each customer from the customer table. Then the another temp table is created pulling the the latitude and longitude of the dealerships from the dealership table. Finally The last table is calculating the distance between a customer's location and every possible dealership location using a cross join and the the <@> function
 
 ---
 
@@ -188,7 +208,15 @@ For example - dealership 1 is below:
 ### SQL
 
 ```sql
--- Your SQL here
+select d.dealership_id,
+array_agg(concat(s.last_name, ',', s.first_name))
+
+from dealerships as d
+join salespeople as s on s.dealership_id = d.dealership_id
+
+group by d.dealership_id
+order by d.dealership_id asc
+
 ```
 
 ### Screenshot
