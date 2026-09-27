@@ -1,8 +1,8 @@
 # Exercise 05: SQLDA Database - Dates, Data Quality, Arrays, and JSON
 
-- Name:
+- Name: Kalei H
 - Course: Database for Analytics
-- Module:
+- Module: 5
 - Database Used: `sqlda` (Sample Datasets)
 - Tools Used: PostgreSQL (pgAdmin or psql)
 
@@ -52,7 +52,7 @@ order by year asc
 
 ### Screenshot
 
-![Q1 Screenshot](screenshots/q1_email_years.png)
+![Q1 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/17ff4e1c3e2611ca39ad377aaa1c13e88bc0b0ce/exercises/screenshots/mod5/q1_mod5.png)
 
 ---
 
@@ -72,7 +72,7 @@ count   year
 ### SQL
 
 ```sql
-select count(email_id),extract(year from sent_date) as year
+select count(email_id) as count,extract(year from sent_date) as year
 
 from emails
 
@@ -82,7 +82,7 @@ order by year asc
 
 ### Screenshot
 
-![Q2 Screenshot](screenshots/q2_message_count_by_year.png)
+![Q2 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/17ff4e1c3e2611ca39ad377aaa1c13e88bc0b0ce/exercises/screenshots/mod5/q2_mod5.png)
 
 ---
 
@@ -100,9 +100,9 @@ Only include emails that contain **both** a sent date and an opened date.
 
 ```sql
 select 
-date(sent_date),
-date(opened_date),
-date(opened_date)-date(sent_date) as days_between
+sent_date,
+opened_date,
+opened_date - sent_date as interval_between
 
 from emails
 
@@ -112,7 +112,7 @@ and opened_date is not null
 
 ### Screenshot
 
-![Q3 Screenshot](screenshots/q3_sent_opened_interval.png)
+![Q3 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/17ff4e1c3e2611ca39ad377aaa1c13e88bc0b0ce/exercises/screenshots/mod5/q3_mod5.png)
 
 ---
 
@@ -134,7 +134,7 @@ where sent_date > opened_date
 
 ### Screenshot
 
-![Q4 Screenshot](screenshots/q4_opened_before_sent.png)
+![Q4 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/17ff4e1c3e2611ca39ad377aaa1c13e88bc0b0ce/exercises/screenshots/mod5/q4_mod5.png)
 
 ---
 
@@ -152,7 +152,7 @@ All of the emails that have a opened date before the sent date are at the same t
 
 ### Screenshot (if requested by instructor)
 
-![Q5 Screenshot](screenshots/q5_explain_date_issue.png)
+![Q5 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/dc50ec04ae0c38964fc59f21fff59ae143bc8cde/exercises/screenshots/mod5/q5_mod5.png)
 
 ---
 
@@ -221,7 +221,7 @@ order by d.dealership_id asc
 
 ### Screenshot
 
-![Q7 Screenshot](screenshots/q7_salespeople_array_by_dealership.png)
+![Q7 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/dc50ec04ae0c38964fc59f21fff59ae143bc8cde/exercises/screenshots/mod5/q7_mod5.png)
 
 ---
 
@@ -242,12 +242,22 @@ Reference image:
 ### SQL
 
 ```sql
--- Your SQL here
+select 
+d.dealership_id,
+d.state,
+array_agg(concat(s.last_name, ',' , s.first_name)) as dealer_salespeople,
+count(salesperson_id)
+
+from dealerships as d
+join salespeople as s on s.dealership_id = d.dealership_id
+
+group by d.dealership_id,d.state
+order by d.state asc
 ```
 
 ### Screenshot
 
-![Q8 Screenshot](screenshots/q8_salespeople_array_state_count.png)
+![Q8 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/dc50ec04ae0c38964fc59f21fff59ae143bc8cde/exercises/screenshots/mod5/q8_mod5.png)
 
 ---
 
@@ -259,12 +269,14 @@ the **customers** table to **JSON**.
 ### SQL
 
 ```sql
--- Your SQL here
+select row_to_json(c)
+
+from customers as c 
 ```
 
 ### Screenshot
 
-![Q9 Screenshot](screenshots/q9_customers_to_json.png)
+![Q9 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/dc50ec04ae0c38964fc59f21fff59ae143bc8cde/exercises/screenshots/mod5/q9_mod5.png)
 
 ---
 
@@ -286,9 +298,23 @@ Reference image:
 ### SQL
 
 ```sql
--- Your SQL here
+with dealership_salespeople as (
+	select 
+d.dealership_id,
+d.state,
+array_agg(concat(s.last_name, ',' , s.first_name)) as dealer_salespeople,
+count(salesperson_id)
+
+from dealerships as d
+join salespeople as s on s.dealership_id = d.dealership_id
+
+group by d.dealership_id,d.state
+order by d.state asc
+)
+
+select row_to_json(ds) from dealership_salespeople as ds
 ```
 
 ### Screenshot
 
-![Q10 Screenshot](screenshots/q10_salespeople_array_to_json.png)
+![Q10 Screenshot](https://github.com/kmharris7/databases-for-analytics/blob/dc50ec04ae0c38964fc59f21fff59ae143bc8cde/exercises/screenshots/mod5/q10_mod5.png)
