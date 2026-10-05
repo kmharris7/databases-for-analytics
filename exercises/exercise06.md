@@ -2,7 +2,7 @@
 
 From the Operational Model to the Dimensional Model
 
-- Name:
+- Name: Kalei
 - Course: Database for Analytics
 - Module: 6
 
@@ -111,7 +111,7 @@ Save your diagram image in this repo and embed it below.
 
 #### Diagram
 
-![Star Schema Diagram](star-schema.png)
+![Star Schema Diagram](https://github.com/kmharris7/databases-for-analytics/blob/d20d3a9162f4d8d5b1a2e68a3fc04e489e0688ba/exercises/screenshots/mod6/star_schema.png)
 
 ---
 
@@ -125,4 +125,6 @@ In 1-2 short paragraphs, explain:
 
 #### Design Notes
 
-_Write your design notes here._
+I chose the dimensions parts, date, and customer for my schema, as they are independent groupings that make up the larger concept of customer sales. When thinking about customer sales at the grain of the data warehouse, which is daily sales, the most important elements are who bought the item, information about the item purchased itself and the date in which the item was purchased. From there, each dimensional tables breaks down the they key components further. The dimDate table breaks the date further down into extracting the data, month, year. and quarter into their own columns. 
+
+My design supports at least 3 of the required analytics questions as it would allow the user to easily to query these specific questions w/ ease, by allowing more complex analytical queries w/ the source of truth from a single fact table. For example. If a user wanted to determine how many parts ax12 were sold in Sept 1994, they could write a query in which they can select the part from the dimPart Table that was sold on 09 month and 1994 year of the dimDate table. The schema can also support the average amount that a customer spends in a year for a month using all three dimensional tables. The same process can be used to find number of sales for appliances in the 3rd quarter of 1994. The schema supports the grain that these questions require.
