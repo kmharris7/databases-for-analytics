@@ -304,15 +304,15 @@ with(format csv, header true, delimiter ',')
 
 And the table was loaded successfully
 
-![Successful add of review table in Postgres]([pic8_project](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic8_project.png))
+![Successful add of review table in Postgres](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic8_project.png)
 
 
 ### **Tips**
 
-Finally was transforming the 'yelp_academic_dataset_tip.json' file. This one had roughlt 900,000 rows, but only 5 keys  so it was easily on of the most managble files. The keys include:
-- user_id: Id of th user who left the tip
-- business_id: Id of the busines about who the tip was left
-- text: The text content of th tip
+Finally was transforming the 'yelp_academic_dataset_tip.json' file. This one had roughly 900,000 rows, but only 5 keys  so it was easily on of the most manageable files. The keys include:
+- user_id: Id of the user who left the tip
+- business_id: Id of the business about who the tip was left
+- text: The text content of the tip
 - date: The date the tip was left
 - compliment_count: Number of compliments that were left on the tip
 
@@ -381,7 +381,7 @@ where rw.user_id = 'FjMQVZjSqY8syIO-53KFKw'
 
 
 
-2. My second query provided an aggregated count of all the reviews of a business that were in LA. This also could have been acheived using the review_count column of the business table
+2. My second query provided an aggregated count of all the reviews of a business that were in LA. This also could have been achieved using the review_count column of the business table
 
 ```sql
 
