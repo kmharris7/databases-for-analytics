@@ -4,7 +4,7 @@
 - Data used: Yelp Open Dataset
 - Date 10/08/26
 - Operating System: Windows 11
-- Sofware used: Postgres
+- Software used: Postgres
 
 ## **Introduction**
 
@@ -15,7 +15,7 @@ For my final project, I decided to create a database using the Yelp from [Yelp D
 
 I found the Yelp Open Dataset through Kaggle, but I downloaded it directly from the business.yelp website.
 
-It was a little diffcult to find data a dataset that wasn't just one table or had related tables that could be joined and aggregated. I did find a couple other datasets that would habve done fine, but due to the the shear size of the Yelp Open Dataset and the initial ease of the data having consistent key-value pairs that would make great CSV file, that's what I chose
+It was a little difficult to find data a dataset that wasn't just one table or had related tables that could be joined and aggregated. I did find a couple other datasets that would have done fine, but due to the the shear size of the Yelp Open Dataset and the initial ease of the data having consistent key-value pairs that would make great CSV file, that's what I chose
 
 
 ## **Installing the Data**
@@ -138,7 +138,7 @@ with (
 
 This fixed the double quote issue, and when I went to copy it into Postgres, it ran successfully
 
-![Sucessful run of business table](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic4_project.png)
+![Successful run of business table](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic4_project.png)
 
 
 ### **User**
@@ -212,9 +212,11 @@ compliment_photos integer
 
 )
 
-![usersTable](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic5_project.png)
+
 
 ```
+![usersTable](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic5_project.png)
+
 
 and the copied the csv into Postgres:
 
@@ -250,7 +252,7 @@ Converting this was very slow, as my computer was pushing to even open the file 
 
 I looked online and found that the read_json method from the pandas library includes an attribute nrows where I can specify the number of rows read. I split the data in half and only ran 3,000,000 rows.
 
-I created the CSV and reviewed it and something was instantly awry. I saw that there were lines created that didn't correspond to json object and therfore row, but they were continuations of previous line.
+I created the CSV and reviewed it and something was instantly awry. I saw that there were lines created that didn't correspond to json object and therefore row, but they were continuations of previous line.
 
 ![Line break issue in csv](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic7_project.png)
 
@@ -375,7 +377,7 @@ join users as us on us.user_id = rw.user_id
 where rw.user_id = 'FjMQVZjSqY8syIO-53KFKw'
 
 ```
-![query1](pic10_project)
+![query1](https://github.com/kmharris7/databases-for-analytics/blob/5faa82b020046d5d59a16cc2f61f544ed62120e9/exercises/screenshots/project/pic10_project.png)
 
 
 
@@ -395,7 +397,7 @@ order by count(rw.user_id) desc
 
 ```
 
-![query2](pic11_project.png)
+![query2]([pic11_project.png](https://github.com/kmharris7/databases-for-analytics/blob/5faa82b020046d5d59a16cc2f61f544ed62120e9/exercises/screenshots/project/pic11_project.png))
 
 
 3. For my third query, I wanted to get the practice of pulling JSON from the sql, so I seached for the name of the businesses and if they accept credit cards or not.
@@ -410,8 +412,10 @@ limit 1000
 
 ```
 
-![query3](pic12.project.png)
+![query3](https://github.com/kmharris7/databases-for-analytics/blob/5faa82b020046d5d59a16cc2f61f544ed62120e9/exercises/screenshots/project/pic12_project.png)
 
+
+4. And for the final query, I searched the name and user id who have the selected user listed in their friends. I used the ilike term as the friends are a string list, and there is no simple way to extract a singular value or break up that list within Postgres:
 
 ```sql
 
@@ -425,3 +429,13 @@ from users as us
 
 where friends ilike '%QF1Kuhs8iwLWANNZxebTow%'
 ```
+![query4](https://github.com/kmharris7/databases-for-analytics/blob/5faa82b020046d5d59a16cc2f61f544ed62120e9/exercises/screenshots/project/pic13_project.png)
+
+
+## **Conclusion**
+
+Throughout this project, I learned that most of the work is done in the transformation stage. Getting the data to a usable format, enough to even import the table into Postgres was the hardest part and took up most of my time. Learning to look into the raw files and see what might be missing and what may cause a problem. Cleaning the data was single-handedly the hardest part, and there's so many ways you can go about cleaning it as well. 
+
+I must also acknowledge that the data I got was fairly clean from the start, as it was coming from Yelp's Open Dataset, with minor albeit annoying changes. Having major chunks to remove of the data or data that is just missing would be a lot harder to clean 
+
+I thought this project was a great exercise into just the practice of prepping data to be used in software like Postgres or MySQL and also coming up w/ questions regarding what can you find about your data. I was thinking of a lot more searches and queries I could write answering different questions about the Yelp userbase and dataset overall. 
