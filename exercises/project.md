@@ -307,7 +307,7 @@ And the table was loaded successfully
 ![Successful add of review table in Postgres]([pic8_project](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic8_project.png))
 
 
-### **Tip**
+### **Tips**
 
 Finally was transforming the 'yelp_academic_dataset_tip.json' file. This one had roughlt 900,000 rows, but only 5 keys  so it was easily on of the most managble files. The keys include:
 - user_id: Id of th user who left the tip
@@ -397,7 +397,7 @@ order by count(rw.user_id) desc
 
 ```
 
-![query2]([pic11_project.png](https://github.com/kmharris7/databases-for-analytics/blob/5faa82b020046d5d59a16cc2f61f544ed62120e9/exercises/screenshots/project/pic11_project.png))
+![query2](https://github.com/kmharris7/databases-for-analytics/blob/5faa82b020046d5d59a16cc2f61f544ed62120e9/exercises/screenshots/project/pic11_project.png)
 
 
 3. For my third query, I wanted to get the practice of pulling JSON from the sql, so I seached for the name of the businesses and if they accept credit cards or not.
