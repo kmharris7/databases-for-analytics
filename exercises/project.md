@@ -4,7 +4,7 @@
 - Data used: Yelp Open Dataset
 - Date 10/08/26
 - Operating System: Windows 11
-- SQL Server: Postgres
+- Sofware used: Postgres
 
 ## **Introduction**
 
@@ -60,7 +60,7 @@ df.to_csv(path_or_buf="yelp_academic_dataset_business.csv", index=False)
 
 The resulting csv file:
 
-![Intial_business_file](insert_picture_here.png)
+![Intial_business_file](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/business_csv.png)
 
 
 From there I went to create the corresponding table in Postgres and copy the CSV:
@@ -84,7 +84,7 @@ categories text,
 hours json
 
 ```
-![Creation of business table](pic2_project.png)
+![Creation of business table](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic2_project.png)
 
 
 
@@ -98,7 +98,7 @@ with(format csv, header true, delimiter ',')
 
 ```
 
-![copying csv into Postges](pic3_project.png)
+![copying csv into Postges](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic3_project.png)
 
 
 
@@ -138,7 +138,7 @@ with (
 
 This fixed the double quote issue, and when I went to copy it into Postgres, it ran successfully
 
-![Sucessful run of business table](pic4_project.png)
+![Sucessful run of business table](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic4_project.png)
 
 
 ### **User**
@@ -212,6 +212,7 @@ compliment_photos integer
 
 )
 
+![usersTable](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic5_project.png)
 
 ```
 
@@ -227,7 +228,7 @@ with(format csv, header true, delimiter ',')
 
 This was successful!
 
-![Successful user table in Postgres](pic6_project.png)
+![Successful user table in Postgres](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic6_project.png)
 
 
 ### **Reviews**
@@ -245,13 +246,13 @@ The 'yelp_academic_dataset_reviews.json' gave me a lot of trouble initially, sol
 - date: The date the review was left
 
 
-Coverting this was very slow, as my computer was pushing to even open the file in VSCODE, and I kept having to restart. I followed the same process I had for the other two in terms of turning the JSON into a CSV, but when I went to copy it into Postgres, the file was way too large. There are roughly 6,000,000 rows in the reviews so I needed a way to make it smaller.
+Converting this was very slow, as my computer was pushing to even open the file in VSCODE, and I kept having to restart. I followed the same process I had for the other two in terms of turning the JSON into a CSV, but when I went to copy it into Postgres, the file was way too large. There are roughly 6,000,000 rows in the reviews so I needed a way to make it smaller.
 
-I looked online and found that the read_json method from the pandas library includes an attribute nrows where I can specifiy the number of rows read. I split the data in half and only ran 3,000,000 rows.
+I looked online and found that the read_json method from the pandas library includes an attribute nrows where I can specify the number of rows read. I split the data in half and only ran 3,000,000 rows.
 
 I created the CSV and reviewed it and something was instantly awry. I saw that there were lines created that didn't correspond to json object and therfore row, but they were continuations of previous line.
 
-![Line break issue in csv](pic7_project)
+![Line break issue in csv](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic7_project.png)
 
 
 I couldn't figure out what went wrong. I eventually came to the conclusion that the answer lied in the json file, which was extremely hard to open given it's 5GB size. Nonetheless, I opened it and realized that there were line breaks "\n" included in the "text" attribute, which was causing the weird alignment in the csv.
@@ -301,7 +302,7 @@ with(format csv, header true, delimiter ',')
 
 And the table was loaded successfully
 
-![Successful add of review table in Postgres](pic8_project)
+![Successful add of review table in Postgres]([pic8_project](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic8_project.png))
 
 
 ### **Tip**
@@ -352,7 +353,7 @@ with(format csv, header true, delimiter ',')
 
 In which the copy was successful
 
-![Successful copy of the tips table](pic9_project.png)
+![Successful copy of the tips table](https://github.com/kmharris7/databases-for-analytics/blob/df14dcb2fe8b23f90c8b4c6c064c0c7a5dcebad6/exercises/screenshots/project/pic9_project.png)
 
 
 
